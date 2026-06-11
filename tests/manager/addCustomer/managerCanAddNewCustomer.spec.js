@@ -30,4 +30,16 @@ test('Assert manager can add new customer', async ({ page }) => {
   const addCustomerPage = new AddCustomerPage (page);
   await addCustomerPage.open(); 
 
+    const firstName = faker.person.firstName();
+    const lastName = faker.person.lastName();
+    const postCode = faker.location.zipCode();
+  await addCustomerPage.fillTheFirstName(firstName);
+  await addCustomerPage.fillTheLastName(lastName);
+  await addCustomerPage.fillThePostCode(postCode);
+  await addCustomerPage.clickAddCustomerButton();
+  await addCustomerPage.clickCustomersButton();
+  await addCustomerPage.assertLastRowFirstName(firstName);
+  await addCustomerPage.assertLastRowLastName(lastName);
+  await addCustomerPage.assertLastRowPostCode(postCode);
+  await addCustomerPage.assertLastRowAccountEmpty();
 });
