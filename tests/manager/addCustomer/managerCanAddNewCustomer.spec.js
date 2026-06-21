@@ -1,6 +1,7 @@
 import { test } from '@playwright/test';
 import { faker } from '@faker-js/faker';
 import { AddCustomerPage } from '../../../src/pages/manager/AddCustomerPage';
+import { CustomersListPage } from '../../../src/pages/manager/CustomersListPage';
 
 test('Assert manager can add new customer', async ({ page }) => {
   /* 
@@ -28,18 +29,19 @@ test('Assert manager can add new customer', async ({ page }) => {
     Use the ".last()" locator to get the last row.
   */
   const addCustomerPage = new AddCustomerPage (page);
+  const customersListPage = new CustomersListPage(page);
   await addCustomerPage.open(); 
 
     const firstName = faker.person.firstName();
     const lastName = faker.person.lastName();
-    const postCode = faker.location.zipCode();
+    const postalCode = faker.location.zipCode();
   await addCustomerPage.fillTheFirstName(firstName);
   await addCustomerPage.fillTheLastName(lastName);
-  await addCustomerPage.fillThePostCode(postCode);
+  await addCustomerPage.fillThePostCode(postalCode);
   await addCustomerPage.clickAddCustomerButton();
   await addCustomerPage.clickCustomersButton();
-  await addCustomerPage.assertLastRowFirstName(firstName);
-  await addCustomerPage.assertLastRowLastName(lastName);
-  await addCustomerPage.assertLastRowPostCode(postCode);
-  await addCustomerPage.assertLastRowAccountEmpty();
+  await customersListPage.assertLastRowFirstName(firstName);
+  await customersListPage.assertLastRowLastName(lastName);
+  await customersListPage.assertLastRowPostCode(postalCode);
+  await customersListPage.assertLastRowAccountEmpty();
 });
