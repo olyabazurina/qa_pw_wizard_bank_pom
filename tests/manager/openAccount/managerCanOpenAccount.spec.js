@@ -32,7 +32,7 @@ test.beforeEach(async ({ page }) => {
   await addCustomerPage.reloadPage();
 });
 
-test('Assert manager can add new customer', async ({ page }) => {
+test('Assert manager can open account for existing customer', async ({ page }) => {
   /* 
   Test:
   1. Click [Open Account].
@@ -58,6 +58,6 @@ test('Assert manager can add new customer', async ({ page }) => {
   await openAccountPage.clickCustomersButton();
   
   const customersListPage = new CustomersListPage(page); 
-  await customersListPage.assertCustomerNotPresent();
+  await customersListPage.assertLastRowAccountEmpty()
 
 });
