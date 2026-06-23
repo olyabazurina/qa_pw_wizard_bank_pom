@@ -3,10 +3,10 @@ import { expect } from '@playwright/test';
 export class CustomersListPage {
   constructor(page) {
     this.page = page;
-    // рядки таблиці — всі tr всередині tbody
+    // Table rows — all tr elements inside tbody
     this.lastRow = page.locator('tbody tr').last();
 
-    // клітинки всередині останнього рядка
+    // Cells of the last row 
     this.lastRowFirstName = this.lastRow.locator('td').nth(0);
     this.lastRowLastName  = this.lastRow.locator('td').nth(1);
     this.lastRowPostCode  = this.lastRow.locator('td').nth(2);

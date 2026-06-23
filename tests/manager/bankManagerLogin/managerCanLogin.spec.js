@@ -16,7 +16,7 @@ test('Assert manager can Login', async ({ page }) => {
   const bankManagerMainPage = new BankManagerMainPage(page);
 
   await bankHomePage.open();
-  await bankHomePage.clickbankManagerLoginButton();
+  await bankHomePage.clickBankManagerLoginButton();
   await bankManagerMainPage.assertAddCustomerButtonVisible();
   await bankManagerMainPage.assertOpenAccountButtonVisible();
   await bankManagerMainPage.assertCustomersButtonVisible();
