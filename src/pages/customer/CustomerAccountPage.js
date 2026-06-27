@@ -24,7 +24,7 @@ export class CustomerAccountPage {
     this.withdrawNoBalanceErrorMessage = page.getByText(
       'Transaction Failed. You can not withdraw amount more than the balance.',
     );
-    this.withdrawSuccessfulMessage = page.locator('span.error.ng-binding');
+    this.withdrawSuccessfulMessage = page.getByText('Transaction successful');
     this.logoutButton = page.getByRole('button', { name: 'Logout' });
   }
 
@@ -50,9 +50,7 @@ export class CustomerAccountPage {
   }
 
   async clickWithdrawlButton() {
-    await this.withdrawlButton.click(
-    await this.page.waitForTimeout(500)
-    );
+    await this.withdrawlButton.click();
   }
 
   async fillAmountInputField(amount) {
@@ -82,6 +80,6 @@ export class CustomerAccountPage {
     await this.accountIdDropDown.selectOption(accountId);
   }
   async assertWithdrawSuccessfulMessageIsVisible() {
-    await expect(this.withdrawSuccessfulMessage).toHaveText('Transaction successful');
+    await expect(this.withdrawSuccessfulMessage).toBeVisible();
   }
 }

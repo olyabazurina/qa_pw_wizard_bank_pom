@@ -19,7 +19,7 @@ test.beforeEach(async ({ page }) => {
   6. Reload the page (This is a simplified step to close the popup).
   */
   const addCustomerPage = new AddCustomerPage(page);
-  await addCustomerPage.open()
+  await addCustomerPage.open();
 
   firstName = faker.person.firstName();
   lastName = faker.person.lastName();
@@ -58,6 +58,5 @@ test('Assert manager can open account for existing customer', async ({ page }) =
   await openAccountPage.clickCustomersButton();
   
   const customersListPage = new CustomersListPage(page); 
-  await customersListPage.assertLastRowAccountEmpty()
-
+  await customersListPage.assertLastRowAccountNotEmpty()
 });
