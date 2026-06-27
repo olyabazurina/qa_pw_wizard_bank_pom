@@ -14,18 +14,17 @@ export class CustomerAccountPage {
     this.transactionsButton = page.getByRole('button', {
       name: 'Transactions',
     });
-    this.withdrawlButton = page.getByRole('button', { name: 'Withdraw' });
+    this.withdrawlButton = page.getByRole('button', { name: 'Withdrawl' });
     this.amountInputField = page.getByPlaceholder('amount');
     this.depositFormButton = page.getByRole('form').getByRole('button', {
       name: 'Deposit',
     });
     this.depositSuccessfulMessage = page.getByText('Deposit Successful');
-    this.withdrawlFormButton = page.getByRole('form').getByRole('button', {
-      name: 'Withdraw',
-    });
+    this.withdrawlFormButton = page.getByRole('button', { name: 'Withdraw', exact: true });
     this.withdrawNoBalanceErrorMessage = page.getByText(
       'Transaction Failed. You can not withdraw amount more than the balance.',
     );
+    this.withdrawSuccessfulMessage = page.locator('span.error.ng-binding');
     this.logoutButton = page.getByRole('button', { name: 'Logout' });
   }
 
@@ -51,7 +50,9 @@ export class CustomerAccountPage {
   }
 
   async clickWithdrawlButton() {
-    await this.withdrawlButton.click();
+    await this.withdrawlButton.click(
+    await this.page.waitForTimeout(500)
+    );
   }
 
   async fillAmountInputField(amount) {
@@ -76,5 +77,11 @@ export class CustomerAccountPage {
 
   async assertWithdrawNoBalanceErrorMessageIsVisible() {
     await expect(this.withdrawNoBalanceErrorMessage).toBeVisible();
+  }
+  async selectAccount(accountId) {
+    await this.accountIdDropDown.selectOption(accountId);
+  }
+  async assertWithdrawSuccessfulMessageIsVisible() {
+    await expect(this.withdrawSuccessfulMessage).toHaveText('Transaction successful');
   }
 }
