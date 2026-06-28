@@ -82,4 +82,7 @@ export class CustomerAccountPage {
   async assertWithdrawSuccessfulMessageIsVisible() {
     await expect(this.withdrawSuccessfulMessage).toBeVisible();
   }
+  async assertPageUrl() {
+    await expect(this.page).toHaveURL('/angularJs-protractor/BankingProject/#/account');
+  }
 }
