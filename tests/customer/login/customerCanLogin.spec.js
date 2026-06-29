@@ -3,7 +3,7 @@ import { BankHomePage } from '../../../src/pages/BankHomePage';
 import { CustomerLoginPage } from '../../../src/pages/customer/CustomerLoginPage';
 import { CustomerAccountPage } from '../../../src/pages/customer/CustomerAccountPage';
 
-test('Assert customer can successfully log in', async ({ page }) => {
+test('Customer can successfully log in', async ({ page }) => {
     const bankHomePage = new BankHomePage(page);
     const customerLoginPage = new CustomerLoginPage(page);
     const customerAccountPage = new CustomerAccountPage(page);

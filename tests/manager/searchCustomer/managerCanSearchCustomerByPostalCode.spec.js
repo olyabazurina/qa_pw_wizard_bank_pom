@@ -5,7 +5,7 @@ import { CustomersListPage } from '../../../src/pages/manager/CustomersListPage'
 
 let firstName;
 let lastName;
-let postalCode
+let postalCode;
 
 test.beforeEach(async ({ page }) => {
   /* 

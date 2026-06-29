@@ -31,8 +31,8 @@ test('Assert customer can reset transactions', async ({ page }) => {
     await transactionsPage.assertFirstRowIsVisible();
     await transactionsPage.clickResetButton();
     await transactionsPage.assertFirstRowIsHidden();
-
 });
+
     test('Assert customer can navigate back from transactions', async ({ page }) => {
     const accountPage = new CustomerAccountPage(page);
     const transactionsPage = new TransactionsPage(page);
