@@ -85,4 +85,7 @@ export class CustomerAccountPage {
   async assertPageUrl() {
     await expect(this.page).toHaveURL('/angularJs-protractor/BankingProject/#/account');
   }
+  async assertLogoutButtonIsVisible() {
+    await expect(this.logoutButton).toBeVisible();
+  }
 }

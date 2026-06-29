@@ -61,9 +61,11 @@ export class CustomersListPage {
   }
 
   async assertCustomerRowContains(firstName, lastName, postalCode) {
-  await expect(this.customerRows.first()).toContainText(firstName);
-  await expect(this.customerRows.first()).toContainText(lastName);
-  await expect(this.customerRows.first()).toContainText(postalCode);
-  }
+  const row = this.customerRows
+    .filter({ hasText: firstName })
+    .filter({ hasText: lastName })
+    .filter({ hasText: postalCode });
 
+  await expect(row).toHaveCount(1);
+  }
 }

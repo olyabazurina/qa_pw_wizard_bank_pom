@@ -4,12 +4,12 @@ import { CustomerLoginPage } from '../../../src/pages/customer/CustomerLoginPage
 import { CustomerAccountPage } from '../../../src/pages/customer/CustomerAccountPage';
 
 test.beforeEach(async ({ page }) => {
-  const loginPage = new CustomerLoginPage(page);
+  const customerLoginPage = new CustomerLoginPage(page);
   const accountPage = new CustomerAccountPage(page);
 
-  await loginPage.open();
-  await loginPage.selectCustomer('Harry Potter');
-  await loginPage.clickLoginButton();
+  await customerLoginPage.open();
+  await customerLoginPage.selectCustomer('Harry Potter');
+  await customerLoginPage.clickLoginButton();
   await accountPage.selectAccount('1004');
 });
 

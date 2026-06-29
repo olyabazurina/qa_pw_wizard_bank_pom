@@ -14,12 +14,12 @@ test('Assert customer has correct bank data', async ({ page }) => {
   6. Assert Currency text
   */
 
-  const loginPage = new CustomerLoginPage(page);
+  const customerLoginPage = new CustomerLoginPage(page);
   const accountPage = new CustomerAccountPage(page);
 
-  await loginPage.open();
-  await loginPage.selectCustomer('Hermoine Granger');
-  await loginPage.clickLoginButton();
+  await customerLoginPage.open();
+  await customerLoginPage.selectCustomer('Hermoine Granger');
+  await customerLoginPage.clickLoginButton();
   await accountPage.assertAccountIdInDropDownHasValue('number:1001');
   await accountPage.assertAccountLineContainsText('Account Number : 1001');
   await accountPage.assertAccountLineContainsText('Balance : 5096');

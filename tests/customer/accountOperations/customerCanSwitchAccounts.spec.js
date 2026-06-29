@@ -3,12 +3,12 @@ import { CustomerLoginPage } from '../../../src/pages/customer/CustomerLoginPage
 import { CustomerAccountPage } from '../../../src/pages/customer/CustomerAccountPage';
 
 test('Assert customer can switch between accounts', async ({ page }) => {
-  const loginPage = new CustomerLoginPage(page);
+  const customerLoginPage = new CustomerLoginPage(page);
   const accountPage = new CustomerAccountPage(page);
 
-  await loginPage.open();
-  await loginPage.selectCustomer('Hermoine Granger');
-  await loginPage.clickLoginButton();
+  await customerLoginPage.open();
+  await customerLoginPage.selectCustomer('Hermoine Granger');
+  await customerLoginPage.clickLoginButton();
   
 // Account 1001 - Dollar
   await accountPage.selectAccount('1001');
